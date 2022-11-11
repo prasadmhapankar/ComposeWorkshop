@@ -6,7 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
@@ -23,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,13 +37,56 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ListItem(
-                painter = painterResource(id = R.drawable.cheese_burger),
-                contentDescription = stringResource(id = R.string.content_description),
-                title = "Cheese burger",
-                description = "Main ingredients: Patty, Cheese, Bun",
-                //modifier = Modifier.padding(5.dp)
-            )
+            val verticalScrollState = rememberScrollState()
+            LazyColumn(
+            ) {
+                /*item {
+                    Text(
+                        text = "This is an Item",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.LightGray)
+                            .padding(24.dp)
+                    )
+                }
+                itemsIndexed(
+                    mutableListOf(
+                        "I",
+                        "like",
+                        "compose",
+                        "I",
+                        "like",
+                        "compose",
+                        "I",
+                        "like",
+                        "compose",
+                        "I",
+                        "like",
+                        "compose"
+                    )
+                ) { index, value ->
+                    Text(
+                        text = value,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(24.dp)
+                    )
+                }*/
+                items(
+                    count = 5000,
+                ){
+                    ListItem(
+                        painter = painterResource(id = R.drawable.cheese_burger),
+                        contentDescription = stringResource(id = R.string.content_description),
+                        title = "Cheese burger",
+                        description = "Main ingredients: Patty, Cheese, Bun",
+                        //modifier = Modifier.padding(5.dp)
+                    )
+                }
+            }
+
         }
     }
 }
@@ -114,7 +162,7 @@ fun ItemCount(
             ),
         )
         CounterButton(
-            text = "-",
+            text = "+",
             count = count,
             updateCount = {
                 updateCount(it + 1)
