@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ComposeDevfest</string>
+    <string name="content_description">This is ImageCard</string>
 </resources>
