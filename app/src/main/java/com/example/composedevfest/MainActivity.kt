@@ -75,12 +75,12 @@ class MainActivity : ComponentActivity() {
                     )
                 }*/
                 items(
-                    count = 5000,
+                    count = 1000,
                 ){
                     ListItem(
                         painter = painterResource(id = R.drawable.cheese_burger),
                         contentDescription = stringResource(id = R.string.content_description),
-                        title = "Cheese burger",
+                        title = "Cheese burger #$it",
                         description = "Main ingredients: Patty, Cheese, Bun",
                         //modifier = Modifier.padding(5.dp)
                     )
