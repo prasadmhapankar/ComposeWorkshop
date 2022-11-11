@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ImageCard(
+            ListItem(
                 painter = painterResource(id = R.drawable.android_jetpack_header),
                 contentDescription = stringResource(id = R.string.content_description),
                 title = "Alfred",
@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ImageCard(
+fun ListItem(
     painter: Painter,
     contentDescription: String,
     title: String,
@@ -96,7 +96,7 @@ fun ImageCard(
 @Composable
 fun DefaultPreview() {
     ComposeDevfestTheme {
-        ImageCard(
+        ListItem(
             painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = stringResource(id = R.string.content_description),
             title = "Alfred",
