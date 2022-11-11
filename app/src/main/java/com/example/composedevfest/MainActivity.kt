@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -78,11 +79,12 @@ class MainActivity : ComponentActivity() {
                 }*/
                 items(
                     count = 1000,
-                ) {
+                    key = { it }
+                ) { item ->
                     ListItem(
                         painter = painterResource(id = R.drawable.cheese_burger),
                         contentDescription = stringResource(id = R.string.content_description),
-                        title = "Cheese burger #$it",
+                        title = "Cheese burger #$item",
                         description = "Main ingredients: Patty, Cheese, Bun",
                         //modifier = Modifier.padding(5.dp)
                     )
@@ -101,9 +103,12 @@ fun ListItem(
     description: String,
     modifier: Modifier = Modifier,
 ) {
-    var count by remember {
+    var count by rememberSaveable { // survive configuration or scroll state change
         mutableStateOf(0)
     }
+    /*var count by remember{
+        mutableStateOf(0)
+    }*/
     Card(
         modifier = modifier
             .fillMaxWidth()
