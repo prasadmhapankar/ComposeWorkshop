@@ -11,8 +11,9 @@ import androidx.compose.material.Card
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -50,7 +51,7 @@ fun ListItem(
     description: String,
     modifier: Modifier = Modifier,
 ) {
-    val count = remember {
+    var count by remember {
         mutableStateOf(0)
     }
     Card(
@@ -81,8 +82,8 @@ fun ListItem(
                 verticalArrangement = Arrangement.SpaceAround
             ) {
                 ItemContent(title, description)
-                ItemCount(count.value) {
-                    count.value = it
+                ItemCount(count) {
+                    count = it
                 }
             }
         }
