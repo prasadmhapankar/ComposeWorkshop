@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -39,6 +40,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val verticalScrollState = rememberScrollState()
             LazyColumn(
+                modifier = Modifier.background(Color.LightGray)
             ) {
                 /*item {
                     Text(
@@ -76,7 +78,7 @@ class MainActivity : ComponentActivity() {
                 }*/
                 items(
                     count = 1000,
-                ){
+                ) {
                     ListItem(
                         painter = painterResource(id = R.drawable.cheese_burger),
                         contentDescription = stringResource(id = R.string.content_description),
@@ -104,7 +106,8 @@ fun ListItem(
     }
     Card(
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(8.dp),
         shape = RoundedCornerShape(size = 15.dp),
         elevation = 8.dp,
     ) {
