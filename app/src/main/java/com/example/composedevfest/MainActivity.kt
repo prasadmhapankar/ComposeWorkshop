@@ -114,7 +114,7 @@ fun ItemCount(
             ),
         )
         CounterButton(
-            text = "-",
+            text = "+",
             count = count,
             updateCount = {
                 updateCount(it + 1)
